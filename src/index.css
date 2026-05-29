@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-serif: "Playfair Display", serif;
+  
+  --color-brand-indigo: #6366f1;
+  --color-brand-violet: #8b5cf6;
+  --color-brand-rose: #f43f5e;
+  --color-brand-amber: #f59e0b;
+  --color-brand-emerald: #10b981;
+  
+  --radius-agency: 2.5rem;
+  --radius-agency-sm: 1.5rem;
+  
+  --shadow-premium: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.05);
+  --shadow-mega: 0 25px 50px -12px rgb(0 0 0 / 0.15);
+}
+
+@layer base {
+  body {
+    @apply antialiased text-slate-900 bg-slate-50 selection:bg-indigo-100 selection:text-indigo-900;
+  }
+
+  @media print {
+    @page { margin: 1cm; size: auto; }
+    body { background: white !important; color: black !important; margin: 0; padding: 0; }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    .break-after-page { page-break-after: always; break-after: page; }
+  }
+}
+
+@layer components {
+  .glass-surface {
+    @apply bg-white/70 backdrop-blur-xl border border-white/40 shadow-premium;
+  }
+  
+  .agency-btn {
+    @apply px-8 py-4 rounded-full font-bold transition-all duration-300 transform active:scale-95 flex items-center justify-center space-x-2;
+  }
+  
+  .agency-heading {
+    @apply font-display tracking-tight leading-none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 8s ease-in-out infinite;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
